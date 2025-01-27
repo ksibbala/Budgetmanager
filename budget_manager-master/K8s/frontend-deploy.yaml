@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend-container
-        image: ksibbala04/frontend:latest
+        image: ksibbala04/frontend:v1
         ports:
         - containerPort: 3000
 
