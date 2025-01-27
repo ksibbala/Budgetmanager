@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/your-username/your-repo.git'  // Replace with your repo URL
+                git 'https://github.com/ksibbala/Budgetmanager.git'  // Replace with your repo URL
             }
         }
         stage('Build Frontend Docker Image') {
@@ -44,13 +44,13 @@ pipeline {
             steps {
                 script {
                     // Apply Kubernetes deployments for frontend, backend, and DB
-                    sh 'kubectl apply -f kubernetes/frontend-deployment.yaml'
-                    sh 'kubectl apply -f kubernetes/backend-deployment.yaml'
+                    sh 'kubectl apply -f K8s/frontend-deploy.yaml'
+                    sh 'kubectl apply -f K8s/backend-deploy.yaml'
                     
                     // Apply the services for frontend, backend, and DB
                     sh 'kubectl apply -f kubernetes/frontend-service.yaml'
                     sh 'kubectl apply -f kubernetes/backend-service.yaml'
-                    sh 'kubectl apply -f kubernetes/db-deployment.yaml'  // Using the MongoDB Docker image from Docker Hub
+                    sh 'kubectl apply -f kubernetes/db-deploy.yaml'  // Using the MongoDB Docker image from Docker Hub
                     sh 'kubectl apply -f kubernetes/db-service.yaml'
                 }
             }
