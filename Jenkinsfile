@@ -4,7 +4,7 @@ pipeline {
     environment {
         FRONTEND_IMAGE = 'ksibbala04/frontend:v1'
         BACKEND_IMAGE = 'ksibbala04/backend:v1'
-        PATH = "/usr/local/bin:$PATH"
+        PATH+EXTRA = "/usr/local/bin"
     }
     stages {
         stage('Checkout Code') {
@@ -15,6 +15,7 @@ pipeline {
         stage('Build Frontend Docker Image') {
             steps {
                 script {
+                    sh 'docker --version'
                     // Build Docker image for Frontend
                     sh 'docker build -t $FRONTEND_IMAGE ./frontend'  // Assuming frontend Dockerfile is in the "frontend" directory
                 }
