@@ -4,6 +4,7 @@ pipeline {
     environment {
         FRONTEND_IMAGE = 'ksibbala04/frontend:v1'
         BACKEND_IMAGE = 'ksibbala04/backend:v1'
+        PATH = "/usr/local/bin:$PATH"
     }
     stages {
         stage('Checkout Code') {
