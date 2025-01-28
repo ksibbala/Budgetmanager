@@ -1,10 +1,6 @@
 pipeline {
-    agent {
-        kubernetes {
-            label 'jnlp'
-            defaultContainer 'kubectl'
-        }
-    }
+    agent any
+    
     environment {
         FRONTEND_IMAGE = 'ksibbala04/frontend:v1'
         BACKEND_IMAGE = 'ksibbala04/backend:v1'
@@ -54,6 +50,25 @@ pipeline {
                     sh 'kubectl apply -f kubernetes/db-service.yaml'
                 }
             }
+        }
+        stage('Verify Deployment') {
+            steps {
+                script {
+                    // Verify that all deployments are running in Kubernetes
+                    sh "kubectl get pods"
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()  // Clean workspace after build
+        }
+        success {
+            echo 'Deployment to Kubernetes succeeded!'
+        }
+        failure {
+            echo 'Deployment to Kubernetes failed.'
         }
     }
 }
