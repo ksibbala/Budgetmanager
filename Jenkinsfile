@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone your GitHub repository
-                git branch: 'python', url: 'https://github.com/ksibbala/Budgetmnager.git'
+                git branch: 'python', url: 'https://github.com/ksibbala/Budgetmanager.git
             }
         }
         
