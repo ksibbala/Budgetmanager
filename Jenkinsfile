@@ -46,10 +46,10 @@ pipeline {
                     sh 'kubectl apply -f K8s/backend-deploy.yaml'
                     
                     // Apply the services for frontend, backend, and DB
-                    sh 'kubectl apply -f kubernetes/frontend-service.yaml'
-                    sh 'kubectl apply -f kubernetes/backend-service.yaml'
-                    sh 'kubectl apply -f kubernetes/db-deploy.yaml'  // Using the MongoDB Docker image from Docker Hub
-                    sh 'kubectl apply -f kubernetes/db-service.yaml'
+                    sh 'kubectl apply -f K8s/frontend-service.yaml'
+                    sh 'kubectl apply -f K8s/backend-service.yaml'
+                    sh 'kubectl apply -f K8s/db-deploy.yaml'  // Using the MongoDB Docker image from Docker Hub
+                    sh 'kubectl apply -f K8s/db-service.yaml'
                 }
             }
         }
