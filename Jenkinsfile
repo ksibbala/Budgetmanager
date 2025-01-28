@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/ksibbala/Budgetmanager.git'  // Replace with your repo URL
+                git branch: 'main', url: 'https://github.com/ksibbala/Budgetmanager.git'  // Replace with your repo URL
             }
         }
         stage('Build Frontend Docker Image') {
