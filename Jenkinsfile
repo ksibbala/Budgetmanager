@@ -2,17 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                // Clone your GitHub repository
-                 git branch: 'python', url: 'https://github.com/ksibbala/Budgetmanager.git' 
+                git branch: python, url: 'https://github.com/ksibbala/Budgetmanager.git'
             }
         }
-        
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip3 install docker kubernetes'  // Install docker module
+            }
+        }
+
         stage('Run Python Script') {
             steps {
-                // Execute the Python script
-                sh 'python3 budget_manager.py'
+                sh 'python3 budget_manager.py'  // Run the Python script
             }
         }
     }
