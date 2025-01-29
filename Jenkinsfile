@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    tools {
-        python 'Python'  // Make sure the name matches what you provided in the global tool configuration
-    }
+    environment {
+            PATH = "/opt/homebrew/bin:$PATH"  // Add Homebrew's Python path
+        }
     stages {
         stage('Checkout') {
             steps {
