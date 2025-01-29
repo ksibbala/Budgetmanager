@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        python 'Python'  // Make sure the name matches what you provided in the global tool configuration
+    }
     stages {
         stage('Checkout') {
             steps {
